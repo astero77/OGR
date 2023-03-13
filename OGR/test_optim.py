@@ -22,10 +22,10 @@ def run_optimization(xy_init, optimizer_class, n_iter, **optimizer_kwargs):
         optimizer.zero_grad()
         loss = rosenbrock(xy_t)
         #print(loss)
-        if loss < 1e-1:
-            path[-1] = xy_t.detach().numpy()
-            print (i)
-            break
+        # if loss < 1e-1:
+        #     path[-1] = xy_t.detach().numpy()
+        #     print (i)
+        #     break
         loss.backward()
         torch.nn.utils.clip_grad_norm_(xy_t, 1.0)
         optimizer.step()
